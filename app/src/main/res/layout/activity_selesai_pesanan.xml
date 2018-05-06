@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuatPesananActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/staticIdPesanan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="79dp"
+        android:text="ID Pesanan:"
+        app:layout_constraintBottom_toTopOf="@+id/staticjumlahHari"
+        app:layout_constraintEnd_toStartOf="@+id/id_pesanan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/staticBiaya"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginStart="96dp"
+        android:text="Biaya:"
+        app:layout_constraintBottom_toTopOf="@+id/staticTanggal"
+        app:layout_constraintEnd_toStartOf="@+id/biaya"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/staticjumlahHari" />
+
+    <TextView
+        android:id="@+id/staticjumlahHari"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="96dp"
+        android:text="Jumlah Hari:"
+        app:layout_constraintBottom_toTopOf="@+id/staticBiaya"
+        app:layout_constraintEnd_toStartOf="@+id/jumlahHari"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/staticIdPesanan" />
+
+    <TextView
+        android:id="@+id/staticTanggal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginStart="96dp"
+        android:text="Tanggal Pesan:"
+        app:layout_constraintBottom_toTopOf="@+id/selesai"
+        app:layout_constraintEnd_toStartOf="@+id/tanggalPesan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/staticBiaya" />
+
+    <TextView
+        android:id="@+id/id_pesanan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginTop="79dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/jumlahHari"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/staticIdPesanan"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/biaya"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="118dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/tanggalPesan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/staticBiaya"
+        app:layout_constraintTop_toBottomOf="@+id/jumlahHari" />
+
+
+    <TextView
+        android:id="@+id/jumlahHari"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="107dp"
+        android:ems="10"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/biaya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/staticjumlahHari"
+        app:layout_constraintTop_toBottomOf="@+id/id_pesanan" />
+
+    <TextView
+        android:id="@+id/tanggalPesan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="379dp"
+        android:layout_marginEnd="92dp"
+        android:ems="10"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/staticTanggal"
+        app:layout_constraintTop_toBottomOf="@+id/biaya" />
+
+
+    <Button
+        android:id="@+id/batal"
+        android:layout_width="84dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="222dp"
+        android:text="Batal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selesai" />
+
+    <Button
+        android:id="@+id/selesai"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:text="Selesai"
+        app:layout_constraintBottom_toTopOf="@+id/batal"
+        app:layout_constraintEnd_toEndOf="@+id/batal"
+        app:layout_constraintStart_toStartOf="@+id/batal"
+        app:layout_constraintTop_toBottomOf="@+id/staticTanggal" />
+
+</android.support.constraint.ConstraintLayout>

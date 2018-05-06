@@ -38,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             if (jsonResponse != null) {
+                                int id_customer = jsonResponse.getInt("id customer");
+                                Intent i = new Intent (LoginActivity.this, MainActivity.class);
+                                i.putExtra("id customer", id_customer);
+                                LoginActivity.this.startActivity(i);
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage("Login Success")
                                         .create()
@@ -52,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 };
+
                 LoginRequest loginRequest = new LoginRequest(email, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);

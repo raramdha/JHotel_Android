@@ -48,8 +48,7 @@ public class MenuListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.layout_room, null);
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.child);
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.child);
 
         txtListChild.setText(childText);
         return convertView;
