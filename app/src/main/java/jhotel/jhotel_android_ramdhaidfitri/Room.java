@@ -1,5 +1,8 @@
 package jhotel.jhotel_android_ramdhaidfitri;
 
+/**
+ * Created by Ramdha on 03/05/2018.
+ */
 public class Room {
     private String roomNumber;
     private String statusKamar;

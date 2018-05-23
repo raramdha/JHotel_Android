@@ -1,5 +1,9 @@
 package jhotel.jhotel_android_ramdhaidfitri;
 
+/**
+ * Created by Ramdha on 03/05/2018.
+ */
+
 public class Lokasi {
     private double x_coord;
     private double y_coord;

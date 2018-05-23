@@ -7,12 +7,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Created by Ramdha on 03/05/2018.
+ */
 
 public class MenuRequest extends StringRequest {
-    private static final String Regis_URL = "http://10.5.78.152/vacantrooms";
+    private static final String Vacant_URL = "http://192.168.43.113:8080/vacantrooms";
 
     public MenuRequest(Response.Listener<String> listener) {
-        super(Method.GET, Regis_URL, listener, null);
+        super(Method.GET, Vacant_URL, listener, null);
 
     }
 

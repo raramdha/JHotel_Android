@@ -24,7 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
+
         final EditText fullName = (EditText) findViewById(R.id.fullName);
         final EditText emailInput = (EditText) findViewById(R.id.emailInput);
         final EditText passInput = (EditText) findViewById(R.id.passInput);
@@ -33,22 +34,22 @@ public class RegisterActivity extends AppCompatActivity {
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = fullName.getText().toString();
-                String email = emailInput.getText().toString();
-                String pass = passInput.getText().toString();
+                final String name = fullName.getText().toString();
+                final String email = emailInput.getText().toString();
+                final String pass = passInput.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
+                        try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            if(jsonResponse!=null){
+                            if (jsonResponse != null) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 builder.setMessage("Registration Success")
                                         .create()
                                         .show();
                             }
-                        } catch(JSONException e){
+                        } catch (JSONException e) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                             builder.setMessage("Registration Failed.")
                                     .create()
@@ -57,11 +58,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                    RegisterRequest registerRequest = new RegisterRequest(name, email, pass, responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                    queue.add(registerRequest);
-
+                RegisterRequest registerRequest = new RegisterRequest(name, email, pass, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                queue.add(registerRequest);
             }
+
         });
     }
 }

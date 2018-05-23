@@ -25,6 +25,12 @@ public class BuatPesananActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buat_pesanan);
+
+        Intent pesanInt = getIntent();
+        currentUserId = pesanInt.getIntExtra("id customer", 1);
+        roomNumber = pesanInt.getStringExtra("nomor kamar");
+        idHotel = pesanInt.getIntExtra("id hotel", 1);
+
         final TextView total_biaya = (TextView) findViewById(R.id.total_biaya);
         final TextView tarif = (TextView) findViewById(R.id.tariff);
         final TextView room_number = (TextView) findViewById(R.id.room_number);
@@ -32,36 +38,43 @@ public class BuatPesananActivity extends AppCompatActivity {
         final Button hitung = (Button) findViewById(R.id.hitung);
         final Button pesan = (Button) findViewById(R.id.pesan);
 
+        hitung.setVisibility(View.VISIBLE);
         pesan.setVisibility(Button.INVISIBLE);
         room_number.setText(roomNumber);
         tarif.setText(Double.toString(tariff));
         total_biaya.setText("0");
 
-        Intent pesanInt = getIntent();
-        currentUserId = pesanInt.getIntExtra("id customer", 1);
-        roomNumber = pesanInt.getStringExtra("nomor kamar");
-        idHotel = pesanInt.getIntExtra("id hotel", 1);
 
         hitung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 banyakHari = Integer.parseInt(durasi_hari.getText().toString());
-                total_biaya.setText(Double.toString(tariff*banyakHari));
+                total_biaya.setText(Double.toString(tariff * banyakHari));
                 hitung.setVisibility(Button.INVISIBLE);
                 pesan.setVisibility(Button.VISIBLE);
+            }
+        });
 
+         pesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int jumlah_hari = banyakHari;
+                final int id_customer = currentUserId;
+                final int id_hotel = idHotel;
+                final String nomor_kamar = roomNumber;
+            
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
+                        try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            if(jsonResponse!=null){
+                            if (jsonResponse != null) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(BuatPesananActivity.this);
                                 builder.setMessage("Ordering Success")
                                         .create()
                                         .show();
                             }
-                        } catch(JSONException e){
+                        } catch (JSONException e) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(BuatPesananActivity.this);
                             builder.setMessage("Ordering Failed.")
                                     .create()
@@ -69,8 +82,10 @@ public class BuatPesananActivity extends AppCompatActivity {
                         }
                     }
                 };
+                BuatPesananRequest pesanRequest = new BuatPesananRequest(jumlah_hari, id_customer, id_hotel, nomor_kamar, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(BuatPesananActivity.this);
+                queue.add(pesanRequest);
             }
         });
     }
-
 }
